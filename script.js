@@ -39,12 +39,9 @@ function renderImages() {
 
 renderImages();
 
-
 const images = [...document.querySelectorAll('.image')];
-
 const popup = document.querySelector('.popup');
 const closeBtn = document.querySelector('.close_btn');
-// const imageName = document.querySelector('.image_name');
 const largeImage = document.querySelector('.large_image');
 const imageIndex = document.querySelector('.index');
 const leftArrow = document.querySelector('.left_arrow');
@@ -63,7 +60,6 @@ images.forEach((item, i) => {
 const updateImage = (i) => {
     let path = `img/img_${i+1}.webp`;
     largeImage.src = path;
-    // imageName.innerHTML = path;
     imageIndex.innerHTML = `${i+1}/${images.length}`;
     index = i;
 };
@@ -102,11 +98,8 @@ function closeDialog() {
 
 document.addEventListener("keydown", (e) => {
 
-    // Dialog muss geöffnet sein
     if (!dialogRef.classList.contains('active')) return;
-
     switch(e.key) {
-
         case "ArrowLeft":
             if (index > 0) {
                 updateImage(index - 1);

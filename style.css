@@ -77,7 +77,6 @@ footer {
     border-radius: 10px;
 }
 
-/* Responsive Design für Imgaes */
 .resp_img {
     max-width: 100%;
     height: auto;
@@ -96,23 +95,19 @@ body.blurred {
 
 .animated_div:hover::after,
 .animated_div:hover::before {
-    /* Animation nur beim Hover */
     animation: 2.5s spin linear infinite;
     padding: 8px 8px;
-    background-image: conic-gradient(from var(--angle), transparent 30%, rgb(9, 255, 0), rgb(18, 2, 240));
-    /* background-image: conic-gradient(rgb(0, 81, 231), rgb(9, 255, 0), rgb(0, 81, 231)); */
-    
+    background-image: conic-gradient(from var(--angle), 
+    transparent 30%, rgb(9, 255, 0), rgb(18, 2, 240));   
 }
 
 .animated_div {
     margin: 0 auto;
-    /* padding: 2em; */
     width: 300px;
     background-color: hsl(0 0% 5%);
     text-align: center;
     border-radius: 10px;
     position: relative;
-
 }
 
 @property     --angle {
@@ -154,9 +149,7 @@ body.blurred {
     color: white;
 }
 
-
 .animated_div:hover {
-    /* background-color: hsl(0 0% 10%); */
     cursor: pointer;
 }
 
@@ -165,7 +158,6 @@ body.blurred {
     min-height: 80dh;
 }
 
-/* Hintergrund wenn Dialog geöffnet ist */
 dialog.popup.opened::backdrop {
     background: rgba(0,0,0,0.75);
     filter: blur(16px);
@@ -173,7 +165,7 @@ dialog.popup.opened::backdrop {
     transition: 0.3s ease-in-out;
 }
 
-/* Standard-Hintergrund */
+
 dialog.popup::backdrop {
     background: rgba(0,0,0,0);
     opacity: 0;
@@ -249,7 +241,6 @@ dialog.popup::backdrop {
     border-radius: 50%;
     cursor: pointer;
     background-image: url(./img/close.png); 
-
 }
 
 .arrow_btn {
@@ -263,7 +254,6 @@ dialog.popup::backdrop {
     background: none;
     cursor: pointer;
     text-align: center;
-    
 }   
 
 .arrow_btn span {
@@ -274,8 +264,7 @@ dialog.popup::backdrop {
 }
 
 .left_arrow {
-    left: 10px;
-        
+    left: 10px; 
 }
 
 .right_arrow {
@@ -283,7 +272,6 @@ dialog.popup::backdrop {
 }
 
 .arrow_btn:hover {
-    /* background: rgba(0, 0, 0, 0.5); */
     font-size: 1.2em;
 }
 
@@ -295,8 +283,8 @@ dialog.popup::backdrop {
     font-weight: 100;
     color: rgba(255, 255, 255, 0.4);
     opacity: 0;
-
 }
+
 .large_image {
     margin-top: 4%;
     width: 95%;
