@@ -1,0 +1,306 @@
+:root {
+
+    --bg_purple_blue: hsl(253, 96%, 10%);
+    --backgr_darkblue: rgb(3, 1, 26);
+    --primary: white;
+    --primary_grey: rgb(156, 156, 156);
+    --primary_light_grey: rgb(239, 239, 239);
+    --light_grey_frm_contact: rgb(220, 220, 220);
+}
+
+body { 
+    background-color: hsl(0, 0%, 10%);
+    min-height: 100dvh;
+    margin: 0;
+}
+
+header {
+    min-width: 100%;
+    background-image: linear-gradient(to bottom, var(--bg_purple_blue), hsl(0, 0%, 10%));
+    display: flex;
+    min-height: 10vh;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Allan", serif;
+    color: hsl(0 0% 85%);
+    font-size: 4em;
+    padding-bottom: 40px;
+}
+
+.logo_img {
+    padding-left: 1em;
+    padding-top: 1em;
+    min-height: 60px;
+    min-width: 35%;
+}
+
+footer {
+    min-width: 100%;
+    background-image: linear-gradient(to top, var(--bg_purple_blue), hsl(0, 0%, 10%));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+}
+
+.main_cont {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 24px;
+    margin-right: 24px;
+    min-height: 90vh;
+}
+
+.main_cont.opened::backdrop {
+    filter: blur(16px);
+    opacity: 1;
+}
+
+.picture_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    gap: 2em;
+
+}
+
+.picture {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.picture img {
+    height: -webkit-fill-available;
+    border-radius: 10px;
+}
+
+/* Responsive Design für Imgaes */
+.resp_img {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+body.blurred {
+    filter: blur(40px);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.resp_img:hover {
+    scale: 1.15;
+}
+
+.animated_div:hover::after,
+.animated_div:hover::before {
+    /* Animation nur beim Hover */
+    animation: 2.5s spin linear infinite;
+    padding: 8px 8px;
+    background-image: conic-gradient(from var(--angle), transparent 30%, rgb(9, 255, 0), rgb(18, 2, 240));
+    /* background-image: conic-gradient(rgb(0, 81, 231), rgb(9, 255, 0), rgb(0, 81, 231)); */
+    
+}
+
+.animated_div {
+    margin: 0 auto;
+    /* padding: 2em; */
+    width: 300px;
+    background-color: hsl(0 0% 5%);
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+
+}
+
+@property     --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.animated_div::after, 
+.animated_div::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 0;
+    border-radius: 10px;
+    animation: none;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg
+    }
+    to {
+        --angle: 360deg
+    }
+}
+
+.animated_div::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+.animated_div span {
+    color: white;
+}
+
+
+.animated_div:hover {
+    /* background-color: hsl(0 0% 10%); */
+    cursor: pointer;
+}
+
+.pic_div {
+    min-width: 80%;
+    min-height: 80dh;
+}
+
+/* Hintergrund wenn Dialog geöffnet ist */
+dialog.popup.opened::backdrop {
+    background: rgba(0,0,0,0.75);
+    filter: blur(16px);
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+}
+
+/* Standard-Hintergrund */
+dialog.popup::backdrop {
+    background: rgba(0,0,0,0);
+    opacity: 0;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 1s;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 90%;
+    max-width: 1600px;
+    height: 90vh;
+    max-height: 980px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    overflow: hidden;
+    transition: 1s;
+    opacity: 0;
+}
+
+.popup.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.popup.active .close_btn,
+.popup.active .image_name,
+.popup.active .index,
+.popup.active .large_image,
+.popup.active .arrow_btn {
+    opacity: 1;
+    transition: opacity .3s;
+    transition-delay: 0.5s;
+}
+
+.top_bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+.image_name {
+    opacity: 0;
+}
+
+.close_btn {
+    opacity: 0;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url(./img/close.png); 
+
+}
+
+.arrow_btn {
+    opacity: 0;
+    position: absolute;
+    top: 90%;
+    transform: translateY(-50%);
+    padding: 2px;
+    border-radius: 5%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: center;
+    
+}   
+
+.arrow_btn span {
+    font-weight: 900;
+    color: hsl(0 0% 40%);
+    font-size: 4em;
+    border: none;
+}
+
+.left_arrow {
+    left: 10px;
+        
+}
+
+.right_arrow {
+    right: 10px;
+}
+
+.arrow_btn:hover {
+    /* background: rgba(0, 0, 0, 0.5); */
+    font-size: 1.2em;
+}
+
+.index {
+    position: absolute;
+    bottom: -5%;
+    right: 43%;
+    font-size: 80px;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+
+}
+.large_image {
+    margin-top: 4%;
+    width: 95%;
+    height: 94%;
+    object-fit: contain;
+    opacity: 0;
+}
